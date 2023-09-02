@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+    konata:
+        image: firedial/midas-bocchi-konata
+        restart: always
+        ports:
+         - "443:443"
+        volumes:
+         - ./ssl/:/etc/nginx/ssl
+        depends_on:
+         - haruhi
+         - eru
+    haruhi:
+        image: firedial/midas-bocchi-haruhi
+        restart: always
+        hostname: haruhi
+        environment:
+            - APP_ENV=production
+            - APP_DEBUG=false
+            - APP_URL=$APP_URL
+            - APP_DOMAIN=$APP_DOMAIN
+            - APP_KEY=$APP_KEY
+            - DB_HOST=$DB_HOST
+            - DB_DATABASE=$DB_DATABASE
+            - DB_USERNAME=$DB_MIDAS_API_USER
+            - DB_PASSWORD=$DB_MIDAS_API_PASSWORD
+    eru:
+        image: firedial/midas-bocchi-eru
+        restart: always
+        environment:
+            - MB_DB_TYPE=mysql
+            - MB_DB_DBNAME=$DB_METABASE_DATABASE
+            - MB_DB_PORT=3306
+            - MB_DB_USER=$DB_METABASE_ROOT_USER
+            - MB_DB_PASS=$DB_METABASE_ROOT_PASSWORD
+            - MB_DB_HOST=$DB_HOST
+    yui:
+        image: firedial/midas-bocchi-yui
+        restart: always
+        hostname: yui
+        volumes:
+            - db:/var/lib/mysql
+    rikka:
+        image: firedial/midas-bocchi-rikka
+        restart: always
+        environment:
+            - NAS_PATH=$NAS_PATH
+            - NAS_USER=$NAS_USER
+            - NAS_PASS=$NAS_PASS
+            - DB_TASK_USER=$DB_TASK_USER
+            - DB_TASK_PASS=$DB_TASK_PASSWORD
+            - DB_HOST=$DB_HOST
+            - DB_MIDAS_DATABASE_NAME=$DB_DATABASE
+            - DB_METABASE_DATABASE_NAME=$DB_METABASE_DATABASE
+            - ENCRYPTION_KEY=$ENCRYPTION_KEY
+            - DISCORD_URL=$DISCORD_URL
+        privileged: true
+        tty: true
+volumes:
+    db:
+
