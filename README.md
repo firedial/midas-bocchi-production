@@ -6,6 +6,14 @@ https://github.com/firedial/midas-bocchi
 
 ## リストアの方法
 
+### git clone
+
+リポジトリをクローンしてくる。
+
+```
+git clone https://github.com/firedial/midas-bocchi-production.git
+```
+
 ### SSL の設定
 
 ディレクトリの作成
