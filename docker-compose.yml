@@ -71,6 +71,7 @@ services:
             - ENCRYPTION_KEY=$ENCRYPTION_KEY
             - DISCORD_URL=$DISCORD_URL
         privileged: true
+        entrypoint: /bin/sh -c "/app/init/init.sh && /bin/sh"
         tty: true
 volumes:
     db:
