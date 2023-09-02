@@ -19,7 +19,7 @@ GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # rikka コンテナの名前
-DOCKER_CONTEINER_RIKKA_NAME = 'midas-bocchi_rikka_1'
+DOCKER_CONTEINER_RIKKA_NAME = 'midas-bocchi-production_rikka_1'
 
 def notify(message):
     return subprocess.run(['docker', 'exec', DOCKER_CONTEINER_RIKKA_NAME, '/app/discord/notify.sh', message])
@@ -32,7 +32,7 @@ def deploy():
     GPIO.output(24, GPIO.HIGH)
 
     # イメージのプル
-    cp = subprocess.run(['docker', 'pull', 'firedial/midas-bocchi-haruhi'])
+    cp = subprocess.run(['docker-compose', 'pull'])
 
     if int(cp.returncode) != 0:
         # 失敗した時は赤をつける
