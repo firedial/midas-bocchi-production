@@ -38,6 +38,22 @@ services:
         image: firedial/midas-bocchi-yui
         restart: always
         hostname: yui
+        environment:
+            - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+            - MYSQL_DATABASE=$DB_DATABASE
+            - MYSQL_CHARSET=$DB_DATABASE_CHARSET
+            - MYSQL_COLLATION=$DB_DATABASE_COLLATION
+            - MYSQL_USER=$DB_MIDAS_ROOT_USER
+            - MYSQL_PASSWORD=$DB_MIDAS_ROOT_PASSWORD
+            - DB_MIDAS_API_USER=$DB_MIDAS_API_USER
+            - DB_MIDAS_API_PASSWORD=$DB_MIDAS_API_PASSWORD
+            - DB_MIDAS_ANALYZE_USER=$DB_MIDAS_ANALYZE_USER
+            - DB_MIDAS_ANALYZE_PASSWORD=$DB_MIDAS_ANALYZE_PASSWORD
+            - DB_METABASE_DATABASE=$DB_METABASE_DATABASE
+            - DB_METABASE_ROOT_USER=$DB_METABASE_ROOT_USER
+            - DB_METABASE_ROOT_PASSWORD=$DB_METABASE_ROOT_PASSWORD
+            - DB_TASK_USER=$DB_TASK_USER
+            - DB_TASK_PASSWORD=$DB_TASK_PASSWORD
         volumes:
             - db:/var/lib/mysql
     rikka:
