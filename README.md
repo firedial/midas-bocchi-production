@@ -11,7 +11,7 @@ https://github.com/firedial/midas-bocchi
 リポジトリをクローンしてくる。
 
 ```
-git clone https://github.com/firedial/midas-bocchi-production.git
+$ git clone https://github.com/firedial/midas-bocchi-production.git
 ```
 
 ### SSL の設定
