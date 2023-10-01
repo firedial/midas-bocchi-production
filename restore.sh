@@ -1,4 +1,14 @@
-#!/bin/sh
+#!/bin/bash
+
+read -sp "encryption key: " key
+
+echo "decrypt env"
+openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedEnv -out .env -pass pass:${key}
+
+echo "decrypt ssl"
+openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedSsl -out ssl.tar.gz -pass pass:${key}
+tar -zxvf ssl.tar.gz
+rm ssl.tar.gz
 
 echo "image pull"
 docker-compose pull
