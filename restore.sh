@@ -1,12 +1,12 @@
 #!/bin/bash
 
-read -sp "encryption key: " key
+read -sp "restore key: " KEY
 
 echo "decrypt env"
-openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedEnv -out .env -pass pass:${key}
+openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedEnv -out .env -pass pass:${KEY}
 
 echo "decrypt ssl"
-openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedSsl -out ssl.tar.gz -pass pass:${key}
+openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedSsl -out ssl.tar.gz -pass pass:${KEY}
 tar -zxvf ssl.tar.gz
 rm ssl.tar.gz
 
