@@ -6,9 +6,9 @@ https://github.com/firedial/midas-bocchi
 
 ## リストアの方法
 
-### git clone
+### リストア
 
-リポジトリをクローンしてくる。
+リポジトリのクローン、イメージのプル、DBのリストア、コンテナの起動を実行。
 
 ```
 $ git clone https://github.com/firedial/midas-bocchi-production.git
