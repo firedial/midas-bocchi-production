@@ -46,7 +46,7 @@ def deploy():
         return
 
     # コンテナに反映
-    cp = subprocess.run(['docker-compose', '-f', 'docker-compose-product.yml', 'up', '-d'])
+    cp = subprocess.run(['docker-compose', 'up', '-d'])
 
     if int(cp.returncode) == 0:
         # 成功した時は緑をつける
