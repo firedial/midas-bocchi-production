@@ -8,11 +8,22 @@ https://github.com/firedial/midas-bocchi
 
 ### リストア
 
-リポジトリのクローン、イメージのプル、DBのリストア、コンテナの起動を実行。
+リポジトリのクローン
 
 ```
 $ git clone https://github.com/firedial/midas-bocchi-production.git
 $ cd midas-bocchi-production
+```
+
+docker のインストール
+
+```
+$ sh ./docker_install.sh
+```
+
+イメージのプル、DBのリストア、コンテナの起動
+
+```
 $ bash restore.sh
 restore key: [input restore key]
 ```
