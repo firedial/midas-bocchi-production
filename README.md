@@ -8,6 +8,12 @@ https://github.com/firedial/midas-bocchi
 
 ### リストア
 
+git のインストール
+
+```
+$ sudo apt-get install git -y
+```
+
 リポジトリのクローン
 
 ```
@@ -15,10 +21,11 @@ $ git clone https://github.com/firedial/midas-bocchi-production.git
 $ cd midas-bocchi-production
 ```
 
-docker のインストール
+docker のインストールと再起動
 
 ```
 $ sh ./docker_install.sh
+$ sudo reboot
 ```
 
 イメージのプル、DBのリストア、コンテナの起動
