@@ -6,12 +6,17 @@ https://github.com/firedial/midas-bocchi
 
 ## リストアの方法
 
+### OS の設定
+
+デバイス: Raspberry Pi 4
+OS: Raspberry Pi OS Lite (64-bit)
+
 ### リストア
 
 git のインストール
 
 ```
-$ sudo apt-get install git -y
+$ sudo apt-get install -y git
 ```
 
 リポジトリのクローン
@@ -21,9 +26,10 @@ $ git clone https://github.com/firedial/midas-bocchi-production.git
 $ cd midas-bocchi-production
 ```
 
-docker のインストールと再起動
+バックアップボタンの初期設定と docker のインストールと再起動
 
 ```
+$ sudo sh ./button_setting.sh
 $ sh ./docker_install.sh
 $ sudo reboot
 ```
@@ -31,14 +37,7 @@ $ sudo reboot
 イメージのプル、DBのリストア、コンテナの起動
 
 ```
+$ cd midas-bocchi-production
 $ bash restore.sh
 restore key: [input restore key]
-```
-
-### バックアップボタンの設定
-
-バックボタンを有効にする。
-
-```
-$ nohup python button.py &
 ```
