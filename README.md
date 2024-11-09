@@ -16,7 +16,7 @@ OS: Raspberry Pi OS Lite (64-bit)
 git のインストール
 
 ```
-$ sudo apt-get install git -y
+$ sudo apt-get install -y git
 ```
 
 リポジトリのクローン
