@@ -8,8 +8,8 @@ https://github.com/firedial/midas-bocchi
 
 ### OS の設定
 
-デバイス: Raspberry Pi 4
-OS: Raspberry Pi OS Lite (64-bit)
+* デバイス: Raspberry Pi 4
+* OS: Raspberry Pi OS Lite (64-bit)
 
 ### リストア
 
