@@ -6,7 +6,7 @@ https://github.com/firedial/midas-bocchi
 
 ## リストアの方法
 
-## OS の設定
+### OS の設定
 
 デバイス: Raspberry Pi 4
 OS: Raspberry Pi OS Lite (64-bit)
