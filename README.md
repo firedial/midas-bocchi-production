@@ -30,7 +30,7 @@ $ cd midas-bocchi-production
 
 ```
 $ sudo sh ./button_setting.sh
-$ sudo sh ./docker_install.sh
+$ sh ./docker_install.sh
 $ sudo reboot
 ```
 
