@@ -37,6 +37,7 @@ $ sudo reboot
 イメージのプル、DBのリストア、コンテナの起動
 
 ```
+$ cd midas-bocchi-production
 $ bash restore.sh
 restore key: [input restore key]
 ```
