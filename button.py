@@ -19,7 +19,7 @@ GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # rikka コンテナの名前
-DOCKER_CONTEINER_RIKKA_NAME = 'midas-bocchi-production_rikka_1'
+DOCKER_CONTEINER_RIKKA_NAME = 'midas-bocchi-production-rikka-1'
 
 def notify(message):
     return subprocess.run(['docker', 'exec', DOCKER_CONTEINER_RIKKA_NAME, '/app/discord/notify.sh', message])
