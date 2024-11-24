@@ -12,6 +12,13 @@ fi
 
 echo "decrypt ssl"
 openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in secret/cryptedSsl -out ssl.tar.gz -pass pass:${KEY}
+
+if [ $? -eq 1 ]; then
+echo "wrong restore key"
+exit
+fi
+
+echo "unzip ssl"
 tar -zxvf ssl.tar.gz
 rm ssl.tar.gz
 
