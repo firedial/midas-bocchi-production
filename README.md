@@ -63,3 +63,25 @@ $ cd midas-bocchi-production
 $ bash restore.sh
 restore key: [input restore key]
 ```
+
+## 秘匿情報の更新
+
+### NAS のマウント
+
+```
+$ sudo mkdir -p /mnt/nas
+$ sudo systemctl daemon-reload
+$ sudo mount -t cifs //192.168.12.13/home /mnt/nas -o username=${USER},password=${PASSWORD},iocharset=utf8,rw
+```
+
+### 環境変数の更新
+
+```
+$ sudo bash ./crypt_backup_env.sh
+```
+
+### 証明書の更新
+
+```
+$ sudo bash ./crypt_backup_ssl.sh
+```
