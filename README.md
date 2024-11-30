@@ -13,28 +13,50 @@ https://github.com/firedial/midas-bocchi
 
 ### リストア
 
-git のインストール
+#### git のインストール
 
 ```
 $ sudo apt-get install -y git
 ```
 
-リポジトリのクローン
+#### リポジトリのクローン
 
 ```
 $ git clone https://github.com/firedial/midas-bocchi-production.git
 $ cd midas-bocchi-production
 ```
 
-バックアップボタンの初期設定と docker のインストールと再起動
+#### 秘匿情報の取得
+
+環境を引数に指定して実行
+
+* 本番環境: prod
+* ステージング環境: stag
+
+```
+$ bash restore_secret.sh {env}
+password: [input password]
+```
+
+#### バックアップボタンの初期設定
 
 ```
 $ sudo sh ./button_setting.sh
+```
+
+#### docker のインストール
+
+```
 $ sh ./docker_install.sh
+```
+
+#### 再起動
+
+```
 $ sudo reboot
 ```
 
-イメージのプル、DBのリストア、コンテナの起動
+####  イメージのプル、DBのリストア、コンテナの起動
 
 ```
 $ cd midas-bocchi-production
