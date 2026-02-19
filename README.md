@@ -26,6 +26,17 @@ $ git clone https://github.com/firedial/midas-bocchi-production.git
 $ cd midas-bocchi-production
 ```
 
+#### ssh の設定
+
+```
+$ sudo sh ./ssh_setting.sh
+```
+
+```
+ssh public key: [鍵認証の公開鍵]
+ssh allow from: [ssh 接続を許可する IP アドレス]
+```
+
 #### 秘匿情報の取得
 
 環境を引数に指定して実行
