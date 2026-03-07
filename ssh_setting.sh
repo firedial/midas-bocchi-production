@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# ssh public key
-read -p "ssh public key: " publicKey
-echo "$publicKey" >> ~/.ssh/authorized_keys
-
-echo "cat authorized_keys"
-echo "--------------------"
-cat ~/.ssh/authorized_keys
-echo "--------------------"
-read tmp
-
 # ssh allow from
 read -p "ssh allow from: " ipAddress
 
@@ -31,9 +21,6 @@ echo "--------------------"
 cat /etc/hosts.deny
 echo "--------------------"
 read tmp
-
-# deny password login
-echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
 # deny root login
 sed -i '/PermitRootLogin/d' /etc/ssh/sshd_config
