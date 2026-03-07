@@ -33,7 +33,6 @@ $ sudo sh ./ssh_setting.sh
 ```
 
 ```
-ssh public key: [鍵認証の公開鍵]
 ssh allow from: [ssh 接続を許可する IP アドレス]
 ```
 
