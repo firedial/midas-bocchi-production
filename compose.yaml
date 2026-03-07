@@ -1,16 +1,16 @@
 services:
     konata:
-        image: firedial/midas-bocchi-konata
+        image: firedial/midas-bocchi-konata:${IMAGE_TAG:-prod-latest}
         restart: always
         ports:
-         - "443:443"
+            - "443:443"
         volumes:
-         - ./ssl/:/etc/nginx/ssl
+            - ./ssl/:/etc/nginx/ssl
         depends_on:
-         - haruhi
-         - eru
+            - haruhi
+            - eru
     haruhi:
-        image: firedial/midas-bocchi-haruhi
+        image: firedial/midas-bocchi-haruhi:${IMAGE_TAG:-prod-latest}
         restart: always
         hostname: haruhi
         environment:
@@ -24,7 +24,7 @@ services:
             - DB_USERNAME=$DB_MIDAS_API_USER
             - DB_PASSWORD=$DB_MIDAS_API_PASSWORD
     eru:
-        image: firedial/midas-bocchi-eru
+        image: firedial/midas-bocchi-eru:${IMAGE_TAG:-prod-latest}
         restart: always
         environment:
             - MB_DB_TYPE=mysql
@@ -34,7 +34,7 @@ services:
             - MB_DB_PASS=$DB_METABASE_ROOT_PASSWORD
             - MB_DB_HOST=$DB_HOST
     yui:
-        image: firedial/midas-bocchi-yui
+        image: firedial/midas-bocchi-yui:${IMAGE_TAG:-prod-latest}
         restart: always
         hostname: yui
         environment:
@@ -56,7 +56,7 @@ services:
         volumes:
             - db:/var/lib/mysql
     rikka:
-        image: firedial/midas-bocchi-rikka
+        image: firedial/midas-bocchi-rikka:${IMAGE_TAG:-prod-latest}
         restart: always
         environment:
             - NAS_PATH=$NAS_PATH
@@ -74,4 +74,3 @@ services:
         tty: true
 volumes:
     db:
-
