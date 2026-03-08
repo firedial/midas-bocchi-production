@@ -16,25 +16,26 @@ https://github.com/firedial/midas-bocchi
 #### git のインストール
 
 ```
-$ sudo apt-get install -y git
+sudo apt-get install -y git
 ```
 
 #### リポジトリのクローン
 
 ```
-$ git clone https://github.com/firedial/midas-bocchi-production.git
-$ cd midas-bocchi-production
+git clone https://github.com/firedial/midas-bocchi-production.git
+```
+
+```
+cd midas-bocchi-production
 ```
 
 #### ssh の設定
 
 ```
-$ sudo sh ./ssh_setting.sh
+sudo sh ./ssh_setting.sh
 ```
 
-```
-ssh allow from: [ssh 接続を許可する IP アドレス]
-```
+`ssh allow from: [ssh 接続を許可する IP アドレス]`
 
 #### 秘匿情報の取得
 
@@ -44,54 +45,69 @@ ssh allow from: [ssh 接続を許可する IP アドレス]
 * ステージング環境: stag
 
 ```
-$ bash restore_secret.sh {env}
-password: [input password]
+bash restore_secret.sh {env}
 ```
+
+`password: [input password]`
 
 #### バックアップボタンの初期設定
 
 ```
-$ sudo sh ./button_setting.sh
+sudo sh ./button_setting.sh
 ```
 
 #### docker のインストール
 
 ```
-$ sh ./docker_install.sh
+sh ./docker_install.sh
 ```
 
 #### 再起動
 
 ```
-$ sudo reboot
+sudo reboot
 ```
 
 ####  イメージのプル、DBのリストア、コンテナの起動
 
 ```
-$ cd midas-bocchi-production
-$ bash restore.sh
-restore key: [input restore key]
+cd midas-bocchi-production
 ```
+
+```
+bash restore.sh
+```
+
+`restore key: [input restore key]`
 
 ## 秘匿情報の更新
 
 ### NAS のマウント
 
 ```
-$ sudo mkdir -p /mnt/nas
-$ sudo systemctl daemon-reload
-$ sudo mount -t cifs //192.168.12.13/home /mnt/nas -o username=${USER},password=${PASSWORD},iocharset=utf8,rw
+sudo mkdir -p /mnt/nas
+```
+
+```
+sudo systemctl daemon-reload
+```
+
+```
+sudo mount -t cifs //192.168.12.13/home /mnt/nas -o username=${USER},password=${PASSWORD},iocharset=utf8,rw
 ```
 
 ### 環境変数の更新
 
 ```
-$ sudo bash ./crypt_backup_env.sh
+sudo bash ./crypt_backup_env.sh
 ```
+
+`restore key: [input restore key]`
 
 ### 証明書の更新
 
 ```
-$ sudo bash ./crypt_backup_ssl.sh
+sudo bash ./crypt_backup_ssl.sh
 ```
+
+`restore key: [input restore key]`
