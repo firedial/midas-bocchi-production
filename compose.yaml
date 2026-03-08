@@ -2,6 +2,9 @@ services:
     konata:
         image: firedial/midas-bocchi-konata:${IMAGE_TAG:-prod-latest}
         restart: always
+        environment:
+            - APP_DOMAIN=$APP_DOMAIN
+            - ANALYZE_DOMAIN=$ANALYZE_DOMAIN
         ports:
             - "443:443"
         volumes:
