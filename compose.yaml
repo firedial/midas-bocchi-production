@@ -1,7 +1,10 @@
 services:
     konata:
-        image: firedial/midas-bocchi-konata:${IMAGE_TAG:-prod-latest}
+        image: firedial/midas-bocchi-konata:${IMAGE_TAG}
         restart: always
+        environment:
+            - APP_DOMAIN=$APP_DOMAIN
+            - ANALYZE_DOMAIN=$ANALYZE_DOMAIN
         ports:
             - "443:443"
         volumes:
@@ -10,7 +13,7 @@ services:
             - haruhi
             - eru
     haruhi:
-        image: firedial/midas-bocchi-haruhi:${IMAGE_TAG:-prod-latest}
+        image: firedial/midas-bocchi-haruhi:${IMAGE_TAG}
         restart: always
         hostname: haruhi
         environment:
@@ -24,7 +27,7 @@ services:
             - DB_USERNAME=$DB_MIDAS_API_USER
             - DB_PASSWORD=$DB_MIDAS_API_PASSWORD
     eru:
-        image: firedial/midas-bocchi-eru:${IMAGE_TAG:-prod-latest}
+        image: firedial/midas-bocchi-eru:${IMAGE_TAG}
         restart: always
         environment:
             - MB_DB_TYPE=mysql
@@ -34,7 +37,7 @@ services:
             - MB_DB_PASS=$DB_METABASE_ROOT_PASSWORD
             - MB_DB_HOST=$DB_HOST
     yui:
-        image: firedial/midas-bocchi-yui:${IMAGE_TAG:-prod-latest}
+        image: firedial/midas-bocchi-yui:${IMAGE_TAG}
         restart: always
         hostname: yui
         environment:
@@ -56,7 +59,7 @@ services:
         volumes:
             - db:/var/lib/mysql
     rikka:
-        image: firedial/midas-bocchi-rikka:${IMAGE_TAG:-prod-latest}
+        image: firedial/midas-bocchi-rikka:${IMAGE_TAG}
         restart: always
         environment:
             - NAS_PATH=$NAS_PATH
