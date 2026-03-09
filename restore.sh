@@ -1,5 +1,13 @@
 #!/bin/bash
 
+read -p "cryptedEnv: " cryptedEnv
+echo $cryptedEnv | base64 -d > cryptedEnv
+
+if [ $? -eq 1 ]; then
+echo "wrong base64"
+exit
+fi
+
 read -sp "restore key: " KEY
 
 echo "decrypt env"
@@ -12,19 +20,12 @@ fi
 
 rm cryptedEnv
 
-echo "decrypt ssl"
-openssl aes-256-cbc -d -pbkdf2 -iter 100000 -salt -in cryptedSsl -out ssl.tar.gz -pass pass:${KEY}
+source .env
 
-if [ $? -eq 1 ]; then
-echo "wrong restore key"
-exit
-fi
-
-rm cryptedSsl
-
-echo "unzip ssl"
-tar -zxvf ssl.tar.gz
-rm ssl.tar.gz
+echo "restore ssl"
+mkdir ssl
+echo ${SSL_KEY} | base64 -d > ssl/server.key
+echo ${SSL_CERT} | base64 -d > ssl/server.crt
 
 echo "image pull"
 docker compose pull

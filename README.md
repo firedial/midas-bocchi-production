@@ -37,19 +37,6 @@ sudo sh ./ssh_setting.sh
 
 `ssh allow from: [ssh 接続を許可する IP アドレス]`
 
-#### 秘匿情報の取得
-
-環境を引数に指定して実行
-
-* 本番環境: prod
-* ステージング環境: stag
-
-```
-bash restore_secret.sh {env}
-```
-
-`password: [input password]`
-
 #### バックアップボタンの初期設定
 
 ```
@@ -78,25 +65,13 @@ cd midas-bocchi-production
 bash restore.sh
 ```
 
+`cryptedEnv: [input base64 string]`
+
 `restore key: [input restore key]`
 
 ## 秘匿情報の更新
 
-### NAS のマウント
-
-```
-sudo mkdir -p /mnt/nas
-```
-
-```
-sudo systemctl daemon-reload
-```
-
-```
-sudo mount -t cifs //192.168.12.13/home /mnt/nas -o username=${USER},password=${PASSWORD},iocharset=utf8,rw
-```
-
-### 環境変数の更新
+base64 の文字列が出力されるのでそれを保管する。
 
 ```
 sudo bash ./crypt_backup_env.sh
@@ -104,10 +79,12 @@ sudo bash ./crypt_backup_env.sh
 
 `restore key: [input restore key]`
 
-### 証明書の更新
+## SSL ファイルを base64 に変換
 
 ```
-sudo bash ./crypt_backup_ssl.sh
+base64 -w 0 ssl/server.key
 ```
 
-`restore key: [input restore key]`
+```
+base64 -w 0 ssl/server.crt
+```
