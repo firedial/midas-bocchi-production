@@ -20,7 +20,11 @@ fi
 
 rm cryptedEnv
 
-source .env 2>/dev/null
+echo "read .env"
+while IFS='=' read -r key value; do
+    [[ "$key" =~ ^#.*$ || -z "$key" ]] && continue
+    export "$key=$value"
+done < .env
 
 echo "restore ssl"
 mkdir ssl
