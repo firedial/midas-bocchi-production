@@ -20,7 +20,7 @@ fi
 
 rm cryptedEnv
 
-source .env
+source .env 2>/dev/null
 
 echo "restore ssl"
 mkdir ssl
