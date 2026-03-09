@@ -3,6 +3,7 @@ services:
         image: firedial/midas-bocchi-konata:${IMAGE_TAG}
         restart: always
         environment:
+            - APP_ENV=$APP_ENV
             - APP_DOMAIN=$APP_DOMAIN
             - ANALYZE_DOMAIN=$ANALYZE_DOMAIN
         ports:
