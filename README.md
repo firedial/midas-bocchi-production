@@ -29,14 +29,6 @@ git clone https://github.com/firedial/midas-bocchi-production.git
 cd midas-bocchi-production
 ```
 
-#### ssh の設定
-
-```
-sudo sh ./ssh_setting.sh
-```
-
-`ssh allow from: [ssh 接続を許可する IP アドレス]`
-
 #### バックアップボタンの初期設定
 
 ```
