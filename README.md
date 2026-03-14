@@ -60,23 +60,3 @@ bash restore.sh
 `cryptedEnv: [input base64 string]`
 
 `restore key: [input restore key]`
-
-## 秘匿情報の更新
-
-base64 の文字列が出力されるのでそれを保管する。
-
-```
-sudo bash ./crypt_backup_env.sh
-```
-
-`restore key: [input restore key]`
-
-## SSL ファイルを base64 に変換
-
-```
-base64 -w 0 ssl/server.key
-```
-
-```
-base64 -w 0 ssl/server.crt
-```
