@@ -41,6 +41,8 @@ services:
         image: firedial/midas-bocchi-yui:${IMAGE_TAG}
         restart: always
         hostname: yui
+        security_opt:
+            - seccomp:unconfined
         healthcheck:
             test:
                 [

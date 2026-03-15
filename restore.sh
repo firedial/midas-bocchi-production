@@ -39,8 +39,8 @@ docker compose pull
 echo "up all"
 docker compose up -d --wait
 
-echo "sleep 30s"
-sleep 30
+echo "sleep 60s"
+sleep 60
 
 echo "midas restore"
 docker compose exec rikka /app/restore/crypt_restore.sh
