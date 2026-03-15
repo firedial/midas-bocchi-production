@@ -45,12 +45,12 @@ services:
             test:
                 [
                     "CMD-SHELL",
-                    "mariadb -u ${DB_MIDAS_API_USER} -p${DB_MIDAS_API_PASSWORD} -e 'SELECT 1'",
+                    "mariadb -u $$DB_MIDAS_API_USER -p$$DB_MIDAS_API_PASSWORD -e 'SELECT 1'",
                 ]
             interval: 5s
             timeout: 3s
             retries: 15
-            start_period: 30s
+            start_period: 60s
         environment:
             - MYSQL_ROOT_PASSWORD=$DB_ROOT_PASSWORD
             - MYSQL_DATABASE=$DB_DATABASE
