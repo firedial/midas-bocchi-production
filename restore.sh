@@ -39,9 +39,12 @@ docker compose pull
 echo "up all"
 docker compose up -d --wait
 
+echo "sleep 30s"
 sleep 30
 
 echo "midas restore"
 docker compose exec rikka /app/restore/crypt_restore.sh
 echo "metabase restore"
 docker compose exec rikka /app/restore/crypt_metabase_restore.sh
+
+echo "restore end"
