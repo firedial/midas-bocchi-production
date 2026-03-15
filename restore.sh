@@ -36,16 +36,10 @@ echo ${SSL_CERT} | base64 -d > ssl/server.crt
 
 echo "image pull"
 docker compose pull
-echo "up rikka and yui"
-docker compose up -d rikka yui
-
-echo "sleep 30s"
-sleep 30
+echo "up all"
+docker compose up -d --wait
 
 echo "midas restore"
 docker compose exec rikka /app/restore/crypt_restore.sh
 echo "metabase restore"
 docker compose exec rikka /app/restore/crypt_metabase_restore.sh
-
-echo "up all"
-docker compose up -d
