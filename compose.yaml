@@ -27,6 +27,7 @@ services:
             - DB_DATABASE=$DB_DATABASE
             - DB_USERNAME=$DB_MIDAS_API_USER
             - DB_PASSWORD=$DB_MIDAS_API_PASSWORD
+            - API_KEY=$API_KEY
     eru:
         image: firedial/midas-bocchi-eru:${IMAGE_TAG}
         restart: always
